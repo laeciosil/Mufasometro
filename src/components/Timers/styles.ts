@@ -23,7 +23,7 @@ export const Controls = styled.section `
     padding: 1rem;
   }
 
-  
+   
   button:nth-child(4){
     background-color: blue;
     color: white;
