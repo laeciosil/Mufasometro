@@ -37,7 +37,7 @@ export const Timer = () => {
     setSecondsAmount(0);
     
   
-  }, [count]);
+  }, [count, initialTime]);
 
   const handleIncrementMinute = (value: number) => {
     setSecondsAmount((state) => state + (60 * value));
