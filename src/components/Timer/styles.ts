@@ -4,8 +4,12 @@ export const Container = styled.section `
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
+
+  h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
 `;
 
 export const TimerContainer = styled.section `
@@ -23,17 +27,6 @@ export const Controls = styled.section `
     padding: 1rem;
   }
 
-   
-  button:nth-child(4){
-    background-color: blue;
-    color: white;
-  }
-
-  button:last-child {
-    background-color: red;
-    color: white;
-  }
-
   button:hover {
     transition: 0.2s;
     filter: brightness(0.8);
@@ -41,7 +34,26 @@ export const Controls = styled.section `
 
 `;
 
+export const PlayAndReset = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
 
+  img{
+    width: 20px;
+  }
+
+  button:first-child {
+    background-color: blue;
+    color: white;
+    width: 45%;
+  }
+  button:last-child {
+    background-color: red;
+    color: white;
+    width: 45%;
+  }
+`;
 export const Minutes = styled.span `
   
   border-radius: 0.25rem;
