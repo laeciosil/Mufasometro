@@ -6,17 +6,15 @@ import { ProgressBar } from "../ProgressBar";
 import ReactPlayer from "react-player";
 
 import {FaPlay, FaPause} from "react-icons/fa";
-import {BiReset} from "react-icons/bi";
+
 import {
   Container,
   Minutes, 
   Seconds, 
   Separator, 
-  PlayAndReset,
   TimerContainer,
-  ControlsContainer,
-  IncrementAddDecrement,
   } from './styles';
+import { TimerControls } from "../TimerControls";
 
 
 export const Timer = () => {
@@ -131,32 +129,26 @@ export const Timer = () => {
         <Separator>:</Separator>
         <Seconds>{String(seconds).padStart(2, '0')}</Seconds>
       </TimerContainer>
-        <ControlsContainer >
-          <IncrementAddDecrement isVisible={controlsVisible}>
-
-            <button onClick={() => handleIncrementMinute(1)}> + 1min</button>
-            <button onClick={() => handleIncrementMinute(10)}> + 10min</button>
-            <button onClick={handleDecrementMinute}> - 1min</button>
-          </IncrementAddDecrement>
-        <PlayAndReset>
-          <button onClick={handlePlayPauseTimer} >
-            <img  src={gifMufasa} alt="" />
-            {PlayPauseButton}
-          </button>
-          <button onClick={handleReset}>
-            <BiReset size={20} />
-          </button>
-        </PlayAndReset>
-      </ControlsContainer>
+      <TimerControls 
+        controlsVisible={controlsVisible}
+        handleIncrementMinute={handleIncrementMinute}
+        handleDecrementMinute={handleDecrementMinute}
+        handlePlayPauseTimer={handlePlayPauseTimer}
+        handleReset={handleReset}
+        gifMufasa={gifMufasa}
+        playPauseButton={PlayPauseButton}
+      />
+        
       {
-        progressBarVisible && (
-        <ProgressBar
-          imgOrGifMufasa={imgOrGifMufasa}
-          timePercent={timePercent}
-          handlePlaySound={handlePlaySound}
-          playSoundButton={playSoundButton}
-        />
-        )
+        progressBarVisible && 
+         (
+            <ProgressBar
+              imgOrGifMufasa={imgOrGifMufasa}
+              timePercent={timePercent}
+              handlePlaySound={handlePlaySound}
+              playSoundButton={playSoundButton}
+            />
+         )
       }
       <ReactPlayer
         style={{display: 'none'}}
