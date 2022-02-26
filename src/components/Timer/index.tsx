@@ -165,7 +165,7 @@ export const Timer = () => {
       <ReactPlayer
         style={{display: 'none'}}
        playing={musicPlaying} 
-      //  url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
+        url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
        />
     </Container>
   ); 
