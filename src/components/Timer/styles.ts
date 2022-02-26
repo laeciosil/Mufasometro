@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IControlsProps {
+  isVisible: boolean;
+};
+
 export const Container = styled.section `
   align-items: center;
   display: flex;
@@ -19,7 +23,8 @@ export const TimerContainer = styled.section `
   padding: 1rem;
 `;
 
-export const Controls = styled.section `
+export const ControlsContainer = styled.section `
+
   button {
     border: none;
     border-radius: 0.25rem;
@@ -33,6 +38,11 @@ export const Controls = styled.section `
   }
 
 `;
+
+export const IncrementAddDecrement =  styled.div<IControlsProps>`
+  display: ${({isVisible}) => isVisible ? 'block' : 'none'};
+`;
+
 
 export const PlayAndReset = styled.div`
   display: flex;
