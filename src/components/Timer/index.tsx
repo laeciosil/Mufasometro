@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import mufasaGif from "../../assets/mufasaGif.gif";
 import mufasaImg from "../../assets/mufasaImg.png";
+import { ProgressBar } from "../ProgressBar";
 
 import ReactPlayer from "react-player";
-import ProgressBar from "@ramonak/react-progress-bar";
+
 import {FaPlay, FaPause} from "react-icons/fa";
 import {BiReset} from "react-icons/bi";
 import {
@@ -14,7 +15,6 @@ import {
   PlayAndReset,
   TimerContainer,
   ControlsContainer,
-  ProgressBarContainer,
   IncrementAddDecrement,
   } from './styles';
 
@@ -150,19 +150,12 @@ export const Timer = () => {
       </ControlsContainer>
       {
         progressBarVisible && (
-          <ProgressBarContainer>
-           <img width="150px" src={imgOrGifMufasa} alt="mufasa" style={{marginLeft: `${timePercent}%`}} />
-           <ProgressBar 
-            width="50vw"
-            margin="10px"
-            completed={timePercent.toFixed(2)}
-           />
-           <button 
-             style={{background: playSoundButton.color}} 
-             onClick={handlePlaySound}>
-             {playSoundButton.title}
-            </button>
-          </ProgressBarContainer>
+        <ProgressBar
+          imgOrGifMufasa={imgOrGifMufasa}
+          timePercent={timePercent}
+          handlePlaySound={handlePlaySound}
+          playSoundButton={playSoundButton}
+        />
         )
       }
       <ReactPlayer
