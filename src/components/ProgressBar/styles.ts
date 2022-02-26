@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const ProgressBarContainer = styled.section `
+interface IProgressBarProps {
+  mufasaProgress: number;
+};
+export const ProgressBarContainer = styled.section<IProgressBarProps> `
   display: flex;
   flex-direction: column;
 
   img {
+    margin-left: ${({mufasaProgress}) => mufasaProgress}%;
+    width: 100px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -18,7 +23,11 @@ export const ProgressBarContainer = styled.section `
   }
 
   button:hover {
-    transition: 0ms.2s;
+    transition: 0.2s;
     filter: brightness(0.8);
   }
+
+  button:outline {
+    border: none;
+  };
 `;

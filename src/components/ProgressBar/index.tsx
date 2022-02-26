@@ -16,12 +16,16 @@ export const ProgressBar = (props: IProgressBarProps) => {
   const {imgOrGifMufasa, timePercent, handlePlaySound, playSoundButton} = props;
 
   return (
-    <ProgressBarContainer>
-    <img width="150px" src={imgOrGifMufasa} alt="mufasa" style={{marginLeft: `${timePercent}%`}} />
+    <ProgressBarContainer 
+      mufasaProgress={timePercent}
+    >
+    <img src={imgOrGifMufasa} alt="mufasa" />
     <ProgressBarComponent 
       width="50vw"
       margin="10px"
-      completed={timePercent.toFixed(2)}
+      bgColor="#036b52"
+      completed={timePercent}
+      customLabel={`${timePercent.toFixed(2)}%`}
     />
     <button 
       style={{background: playSoundButton.color}} 

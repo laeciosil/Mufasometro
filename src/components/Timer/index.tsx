@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+
+import { ProgressBar } from "../ProgressBar";
+import ReactPlayer from "react-player";
+import {FaPlay, FaPause} from "react-icons/fa";
+
 import mufasaGif from "../../assets/mufasaGif.gif";
 import mufasaImg from "../../assets/mufasaImg.png";
-import { ProgressBar } from "../ProgressBar";
-
-import ReactPlayer from "react-player";
-
-import {FaPlay, FaPause} from "react-icons/fa";
 
 import {
   Container,
@@ -13,22 +13,22 @@ import {
   Seconds, 
   Separator, 
   TimerContainer,
-  } from './styles';
+} from './styles';
+
 import { TimerControls } from "../TimerControls";
 
-
 export const Timer = () => {
-  const [secondsAmount, setSecondsAmount] = useState(0);
-  const [timePercent, setTimePercent] = useState(0);
-  const [percentageForSecond, setPercentageForSecond] = useState(0);
+  const [playPauseButton, setPlayPauseButton] = useState(<FaPlay size={20}/>);
   const [progressBarVisible, setProgressBarVisible] = useState(false);
-  const [gifMufasa, setGifMufasa] = useState(mufasaGif);
+  const [percentageForSecond, setPercentageForSecond] = useState(0);
   const [imgOrGifMufasa, setImgOrGifMufasa] = useState(mufasaGif);
-  const [initialTime, setInitialTime] = useState(0);
+  const [controlsVisible, setControlsVisible] = useState(true);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [timerRunning, setTimerRunning] = useState(false);
-  const [controlsVisible, setControlsVisible] = useState(true);
-  const [PlayPauseButton, setPlayPauseButton] = useState(<FaPlay size={20}/>);
+  const [secondsAmount, setSecondsAmount] = useState(0);
+  const [gifMufasa, setGifMufasa] = useState(mufasaGif);
+  const [timePercent, setTimePercent] = useState(0);
+  const [initialTime, setInitialTime] = useState(0);
   const [playSoundButton, setPlaySoundButton] = useState({
     title: 'Reproduzir música',
     color: 'green',
@@ -43,7 +43,7 @@ export const Timer = () => {
       return;
     } else if (timerRunning && secondsAmount === 0) {
       setImgOrGifMufasa(mufasaImg);
-      setTimerRunning(false); 
+      setTimerRunning(false);
       setSecondsAmount(0);
     }
   }, [percentageForSecond, timerRunning, secondsAmount]);
@@ -51,14 +51,11 @@ export const Timer = () => {
 
   const handleIncrementMinute = (value: number) => {
     if(secondsAmount === -1){
-
       setSecondsAmount((oldState) => oldState + (60 * value) + 1);
     } else {
-
       setSecondsAmount((oldState) => oldState + (60 * value));
       setInitialTime((oldState) => oldState + (60 * value));
     }
-    
   };
   
   const handleDecrementMinute = () => {
@@ -69,22 +66,22 @@ export const Timer = () => {
   
   const handlePlayPauseTimer = () => {
     if(timerRunning) {
-      setTimerRunning(false);
       setPlayPauseButton(<FaPlay size={20}/>);
       setImgOrGifMufasa(mufasaImg);
+      setTimerRunning(false);
       
     } else if(secondsAmount > 0) {
+      setPercentageForSecond(100 / initialTime);
       setPlayPauseButton(<FaPause size={20}/>);
       setImgOrGifMufasa(mufasaGif);
+      setProgressBarVisible(true);
+      setControlsVisible(false);
       setTimerRunning(true);
       setMusicPlaying(true);
-      setProgressBarVisible(true);
       setGifMufasa('')
-      setPercentageForSecond(100 / initialTime);
-      setControlsVisible(false);
       setPlaySoundButton({
         title: 'Pausar música',
-        color: 'red',
+        color: 'rgb(224, 55, 55)',
       })
    }
   };
@@ -93,7 +90,7 @@ export const Timer = () => {
     if(playSoundButton.color === 'green') {
       setPlaySoundButton({
         title: 'Pausar música',
-        color: 'red',
+        color: 'rgb(224, 55, 55)',
       })
       setMusicPlaying(true);
 
@@ -130,31 +127,31 @@ export const Timer = () => {
         <Seconds>{String(seconds).padStart(2, '0')}</Seconds>
       </TimerContainer>
       <TimerControls 
-        controlsVisible={controlsVisible}
         handleIncrementMinute={handleIncrementMinute}
         handleDecrementMinute={handleDecrementMinute}
         handlePlayPauseTimer={handlePlayPauseTimer}
+        playPauseButton={playPauseButton}
+        controlsVisible={controlsVisible}
         handleReset={handleReset}
         gifMufasa={gifMufasa}
-        playPauseButton={PlayPauseButton}
       />
         
       {
         progressBarVisible && 
          (
             <ProgressBar
-              imgOrGifMufasa={imgOrGifMufasa}
-              timePercent={timePercent}
               handlePlaySound={handlePlaySound}
               playSoundButton={playSoundButton}
+              imgOrGifMufasa={imgOrGifMufasa}
+              timePercent={timePercent}
             />
          )
       }
       <ReactPlayer
         style={{display: 'none'}}
-       playing={musicPlaying} 
-       url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
-       />
+        playing={musicPlaying} 
+        url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
+      />
     </Container>
   ); 
 };

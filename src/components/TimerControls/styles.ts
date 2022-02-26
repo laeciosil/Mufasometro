@@ -5,7 +5,6 @@ interface IControlsProps {
 };
 
 export const ControlsContainer = styled.section `
-
   button {
     border: none;
     border-radius: 0.25rem;
@@ -18,12 +17,14 @@ export const ControlsContainer = styled.section `
     filter: brightness(0.8);
   }
 
+  button:outline {
+    border: none;
+  };
 `;
 
 export const IncrementAddDecrement =  styled.div<IControlsProps>`
   display: ${({isVisible}) => isVisible ? 'block' : 'none'};
 `;
-
 
 export const PlayAndReset = styled.div`
   display: flex;
@@ -35,12 +36,12 @@ export const PlayAndReset = styled.div`
   }
 
   button:first-child {
-    background-color: blue;
+    background-color: #326EF0;
     color: white;
     width: 45%;
   }
   button:last-child {
-    background-color: red;
+    background-color: rgb(224, 55, 55);
     color: white;
     width: 45%;
   }

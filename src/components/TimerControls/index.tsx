@@ -25,11 +25,12 @@ export const TimerControls = (props: ITimerControlsProps) => {
     playPauseButton,
     handleReset,
   } = props;
+
   return (
     <ControlsContainer >
       <IncrementAddDecrement isVisible={controlsVisible}>
-        <button onClick={() => handleIncrementMinute(1)}> + 1min</button>
-        <button onClick={() => handleIncrementMinute(10)}> + 10min</button>
+        <button onClick={() => handleIncrementMinute(1)}>+ 1min</button>
+        <button onClick={() => handleIncrementMinute(10)}>+ 10min</button>
         <button onClick={handleDecrementMinute}> - 1min</button>
       </IncrementAddDecrement>
       <PlayAndReset>
