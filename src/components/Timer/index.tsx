@@ -52,6 +52,8 @@ export const Timer = () => {
   const handleIncrementMinute = (value: number) => {
     if(secondsAmount === -1){
       setSecondsAmount((oldState) => oldState + (60 * value) + 1);
+      setInitialTime((oldState) => oldState + (60 * value));
+      setTimePercent(0);
     } else {
       setSecondsAmount((oldState) => oldState + (60 * value));
       setInitialTime((oldState) => oldState + (60 * value));
