@@ -3,9 +3,11 @@ import styled from "styled-components";
 interface IProgressBarProps {
   mufasaProgress: number;
 };
+
 export const ProgressBarContainer = styled.section<IProgressBarProps> `
   display: flex;
   flex-direction: column;
+  margin-top: 5rem;
 
   img {
     margin-left: ${({mufasaProgress}) => mufasaProgress}%;

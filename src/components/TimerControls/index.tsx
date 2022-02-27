@@ -1,10 +1,17 @@
 import {BiReset} from "react-icons/bi";
+import { ControlMusic} from "../ControlMusic";
 
 import {
   ControlsContainer, 
   IncrementAddDecrement, 
   PlayAndReset
 } from './styles';
+
+interface IControlMusicProps {
+  speakerIcon: JSX.Element;
+  musicPlaying: boolean;
+  handlePlaySound: () => void;
+};
 
 interface ITimerControlsProps {
   gifMufasa: string;
@@ -13,8 +20,11 @@ interface ITimerControlsProps {
   handleReset: () => void;
   handlePlayPauseTimer: () => void;
   handleDecrementMinute: () => void;
-  handleIncrementMinute: (value: number) => void;
+  handleIncrementMinute: (value: number) => void; 
+
+  controlsMusic: IControlMusicProps;
 }
+
 export const TimerControls = (props: ITimerControlsProps) => {
   const {
     gifMufasa, 
@@ -24,7 +34,10 @@ export const TimerControls = (props: ITimerControlsProps) => {
     handlePlayPauseTimer,
     playPauseButton,
     handleReset,
+    controlsMusic,
   } = props;
+
+  const {musicPlaying, handlePlaySound, speakerIcon  } = controlsMusic;
 
   return (
     <ControlsContainer >
@@ -34,13 +47,19 @@ export const TimerControls = (props: ITimerControlsProps) => {
         <button onClick={handleDecrementMinute}> - 1min</button>
       </IncrementAddDecrement>
       <PlayAndReset>
-        <button onClick={handlePlayPauseTimer} >
+        <button className="playPause" onClick={handlePlayPauseTimer} >
           <img  src={gifMufasa} alt="" />
           {playPauseButton}
         </button>
         <button onClick={handleReset}>
           <BiReset size={20} />
         </button>
+        <ControlMusic
+          musicPlaying={musicPlaying}
+          handlePlaySound={handlePlaySound}
+          speakerIcon={speakerIcon}
+
+        />
       </PlayAndReset>
     </ControlsContainer>
   )

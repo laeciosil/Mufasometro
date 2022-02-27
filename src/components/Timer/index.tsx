@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-
 import { ProgressBar } from "../ProgressBar";
-import ReactPlayer from "react-player";
 import {FaPlay, FaPause} from "react-icons/fa";
-
+import {GiSpeaker, GiSpeakerOff} from "react-icons/gi";
 import mufasaGif from "../../assets/mufasaGif.gif";
 import mufasaImg from "../../assets/mufasaImg.png";
 
@@ -29,10 +27,7 @@ export const Timer = () => {
   const [gifMufasa, setGifMufasa] = useState(mufasaGif);
   const [timePercent, setTimePercent] = useState(0);
   const [initialTime, setInitialTime] = useState(0);
-  const [playSoundButton, setPlaySoundButton] = useState({
-    title: 'Reproduzir música',
-    color: 'green',
-  })
+  const [speakerIcon, setSpeakerIcon] = useState(<GiSpeakerOff size={20} color="white"/>);
   
   useEffect(() => {
     if(timerRunning && secondsAmount > 0) {
@@ -81,27 +76,18 @@ export const Timer = () => {
       setTimerRunning(true);
       setMusicPlaying(true);
       setGifMufasa('')
-      setPlaySoundButton({
-        title: 'Pausar música',
-        color: 'rgb(224, 55, 55)',
-      })
+      setSpeakerIcon(<GiSpeaker size={20} color="white"/>);
    }
   };
 
   const handlePlaySound  = () => {
-    if(playSoundButton.color === 'green') {
-      setPlaySoundButton({
-        title: 'Pausar música',
-        color: 'rgb(224, 55, 55)',
-      })
-      setMusicPlaying(true);
+    if(musicPlaying) {
+      setSpeakerIcon(<GiSpeakerOff size={20} color="white"/>);
+      setMusicPlaying(false);
 
     } else {
-      setPlaySoundButton({
-        title: 'Reproduzir música',
-        color: 'green',
-      })
-      setMusicPlaying(false);
+      setSpeakerIcon(<GiSpeaker size={20} color="white"/>);
+      setMusicPlaying(true);
     }
   }
 
@@ -111,7 +97,6 @@ export const Timer = () => {
     setControlsVisible(true);
     setGifMufasa(mufasaGif);
     setTimerRunning(false);
-    setMusicPlaying(false);
     setSecondsAmount(0);
     setTimePercent(0);
     setInitialTime(0);
@@ -136,24 +121,19 @@ export const Timer = () => {
         controlsVisible={controlsVisible}
         handleReset={handleReset}
         gifMufasa={gifMufasa}
+
+       controlsMusic={{handlePlaySound, speakerIcon, musicPlaying}}
       />
         
       {
         progressBarVisible && 
          (
             <ProgressBar
-              handlePlaySound={handlePlaySound}
-              playSoundButton={playSoundButton}
               imgOrGifMufasa={imgOrGifMufasa}
               timePercent={timePercent}
             />
          )
       }
-      <ReactPlayer
-        style={{display: 'none'}}
-        playing={musicPlaying} 
-        url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
-      />
     </Container>
   ); 
 };

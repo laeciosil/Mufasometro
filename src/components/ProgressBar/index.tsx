@@ -4,16 +4,10 @@ import {ProgressBarContainer} from './styles';
 interface IProgressBarProps {
   imgOrGifMufasa: string;
   timePercent: number;
-  playSoundButton: {
-    color: string;
-    title: string;
-  };
-  
-  handlePlaySound: () => void;
 };
 
 export const ProgressBar = (props: IProgressBarProps) => {
-  const {imgOrGifMufasa, timePercent, handlePlaySound, playSoundButton} = props;
+  const {imgOrGifMufasa, timePercent} = props;
 
   return (
     <ProgressBarContainer 
@@ -27,11 +21,7 @@ export const ProgressBar = (props: IProgressBarProps) => {
       completed={timePercent}
       customLabel={`${timePercent.toFixed(2)}%`}
     />
-    <button 
-      style={{background: playSoundButton.color}} 
-      onClick={handlePlaySound}>
-      {playSoundButton.title}
-    </button>
+    
   </ProgressBarContainer>
   );
 };

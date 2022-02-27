@@ -5,6 +5,7 @@ interface IControlsProps {
 };
 
 export const ControlsContainer = styled.section `
+
   button {
     border: none;
     border-radius: 0.25rem;
@@ -28,21 +29,22 @@ export const IncrementAddDecrement =  styled.div<IControlsProps>`
 
 export const PlayAndReset = styled.div`
   display: flex;
-  justify-content: space-between;
   margin-top: 0.5rem;
 
   img{
     width: 20px;
   }
 
-  button:first-child {
+  .playPause {
     background-color: #326EF0;
     color: white;
-    width: 45%;
+    min-width: 30%;
+    
   }
-  button:last-child {
+  button:nth-child(2) {
     background-color: rgb(224, 55, 55);
     color: white;
-    width: 45%;
+    min-width: 30%;
+    
   }
 `;
