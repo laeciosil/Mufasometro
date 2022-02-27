@@ -4,7 +4,7 @@ import { ControlMusic} from "../ControlMusic";
 import {
   ControlsContainer, 
   IncrementAddDecrement, 
-  PlayAndReset
+  PlayAndResetAndMusic
 } from './styles';
 
 interface IControlMusicProps {
@@ -46,7 +46,7 @@ export const TimerControls = (props: ITimerControlsProps) => {
         <button onClick={() => handleIncrementMinute(10)}>+ 10min</button>
         <button onClick={handleDecrementMinute}> - 1min</button>
       </IncrementAddDecrement>
-      <PlayAndReset>
+      <PlayAndResetAndMusic>
         <button className="playPause" onClick={handlePlayPauseTimer} >
           <img  src={gifMufasa} alt="" />
           {playPauseButton}
@@ -58,9 +58,8 @@ export const TimerControls = (props: ITimerControlsProps) => {
           musicPlaying={musicPlaying}
           handlePlaySound={handlePlaySound}
           speakerIcon={speakerIcon}
-
         />
-      </PlayAndReset>
+      </PlayAndResetAndMusic>
     </ControlsContainer>
   )
 };

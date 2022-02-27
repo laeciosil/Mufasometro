@@ -15,7 +15,7 @@ export const ProgressBar = (props: IProgressBarProps) => {
     >
     <img src={imgOrGifMufasa} alt="mufasa" />
     <ProgressBarComponent 
-      width="50vw"
+      width="75vw"
       margin="10px"
       bgColor="#036b52"
       completed={timePercent}

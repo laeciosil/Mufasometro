@@ -11,7 +11,7 @@ export const ProgressBarContainer = styled.section<IProgressBarProps> `
 
   img {
     margin-left: ${({mufasaProgress}) => mufasaProgress}%;
-    width: 100px;
+    width: 150px;
     margin-top: 10px;
     margin-bottom: 10px;
   }

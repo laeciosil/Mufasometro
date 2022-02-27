@@ -62,12 +62,8 @@ export const Timer = () => {
   };
   
   const handlePlayPauseTimer = () => {
-    if(timerRunning) {
-      setPlayPauseButton(<FaPlay size={20}/>);
-      setImgOrGifMufasa(mufasaImg);
-      setTimerRunning(false);
-      
-    } else if(secondsAmount > 0) {
+    if(secondsAmount === initialTime){
+      setSpeakerIcon(<GiSpeaker size={20} color="white"/>);
       setPercentageForSecond(100 / initialTime);
       setPlayPauseButton(<FaPause size={20}/>);
       setImgOrGifMufasa(mufasaGif);
@@ -75,9 +71,21 @@ export const Timer = () => {
       setControlsVisible(false);
       setTimerRunning(true);
       setMusicPlaying(true);
+      setGifMufasa('');
+      
+    } else if(timerRunning) {
+      setPlayPauseButton(<FaPlay size={20}/>);
+      setImgOrGifMufasa(mufasaImg);
+      setTimerRunning(false);
+      
+    } else if(secondsAmount > 0) {
+      setPlayPauseButton(<FaPause size={20}/>);
+      setImgOrGifMufasa(mufasaGif);
+      setProgressBarVisible(true);
+      setControlsVisible(false);
+      setTimerRunning(true);
       setGifMufasa('')
-      setSpeakerIcon(<GiSpeaker size={20} color="white"/>);
-   }
+   } 
   };
 
   const handlePlaySound  = () => {

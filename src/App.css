@@ -5,7 +5,8 @@
 }
 .App {
   align-items: center;
-  background-color: rgb(119, 115, 115);
+  background-image: url('../src/assets/bg.webp');
+  background-size: cover; 
   display: flex;
   height: 100vh;
   justify-content: center;

@@ -27,8 +27,9 @@ export const IncrementAddDecrement =  styled.div<IControlsProps>`
   display: ${({isVisible}) => isVisible ? 'block' : 'none'};
 `;
 
-export const PlayAndReset = styled.div`
+export const PlayAndResetAndMusic = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-top: 0.5rem;
 
   img{

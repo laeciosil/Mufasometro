@@ -13,7 +13,8 @@ export const Container = styled.section `
 `;
 
 export const TimerContainer = styled.section `
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   padding: 1rem;
