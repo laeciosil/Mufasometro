@@ -62,7 +62,7 @@ export const Timer = () => {
   };
   
   const handlePlayPauseTimer = () => {
-    if(secondsAmount === initialTime){
+    if(secondsAmount === initialTime && secondsAmount > 0) {
       setSpeakerIcon(<GiSpeaker size={20} color="white"/>);
       setPercentageForSecond(100 / initialTime);
       setPlayPauseButton(<FaPause size={20}/>);
@@ -72,7 +72,7 @@ export const Timer = () => {
       setTimerRunning(true);
       setMusicPlaying(true);
       setGifMufasa('');
-      
+
     } else if(timerRunning) {
       setPlayPauseButton(<FaPlay size={20}/>);
       setImgOrGifMufasa(mufasaImg);
