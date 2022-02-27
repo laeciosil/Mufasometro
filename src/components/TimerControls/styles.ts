@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface IControlsProps {
   isVisible: boolean;
+  timerRunning: boolean;
 };
 
 export const ControlsContainer = styled.section `
@@ -27,7 +28,7 @@ export const IncrementAddDecrement =  styled.div<IControlsProps>`
   display: ${({isVisible}) => isVisible ? 'block' : 'none'};
 `;
 
-export const PlayAndResetAndMusic = styled.div`
+export const PlayAndResetAndMusic = styled.div<IControlsProps>`
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
@@ -43,9 +44,14 @@ export const PlayAndResetAndMusic = styled.div`
     
   }
   button:nth-child(2) {
+    display: ${({isVisible}) => isVisible ? 'block' : 'flex'};
     background-color: rgb(224, 55, 55);
     color: white;
-    min-width: 30%;
+    min-width: 35%;
+
+    img {
+      display: ${({timerRunning}) => timerRunning ? 'none' : 'flex'};
+    }
     
   }
 `;

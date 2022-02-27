@@ -1,4 +1,4 @@
-import {BiReset} from "react-icons/bi";
+import {BsArrowCounterclockwise} from 'react-icons/bs';
 import { ControlMusic} from "../ControlMusic";
 
 import {
@@ -14,7 +14,9 @@ interface IControlMusicProps {
 };
 
 interface ITimerControlsProps {
-  gifMufasa: string;
+  gifMufasaPlay: string;
+  gifMufasaReset: string;
+  timerRunning: boolean;
   controlsVisible: boolean;
   playPauseButton: JSX.Element;
   handleReset: () => void;
@@ -27,7 +29,8 @@ interface ITimerControlsProps {
 
 export const TimerControls = (props: ITimerControlsProps) => {
   const {
-    gifMufasa, 
+    gifMufasaPlay, 
+    gifMufasaReset, 
     controlsVisible, 
     handleIncrementMinute,
     handleDecrementMinute,
@@ -35,24 +38,32 @@ export const TimerControls = (props: ITimerControlsProps) => {
     playPauseButton,
     handleReset,
     controlsMusic,
+    timerRunning
   } = props;
 
   const {musicPlaying, handlePlaySound, speakerIcon  } = controlsMusic;
 
   return (
     <ControlsContainer >
-      <IncrementAddDecrement isVisible={controlsVisible}>
-        <button onClick={() => handleIncrementMinute(1)}>+ 1min</button>
+      <IncrementAddDecrement
+       isVisible={controlsVisible}
+       timerRunning={timerRunning}
+       >
+        <button aria-label="Fechar" onClick={() => handleIncrementMinute(1)}>+ 1min</button>
         <button onClick={() => handleIncrementMinute(10)}>+ 10min</button>
         <button onClick={handleDecrementMinute}> - 1min</button>
       </IncrementAddDecrement>
-      <PlayAndResetAndMusic>
+      <PlayAndResetAndMusic
+        isVisible={controlsVisible}
+        timerRunning={timerRunning}
+      >
         <button className="playPause" onClick={handlePlayPauseTimer} >
-          <img  src={gifMufasa} alt="" />
+          <img  src={gifMufasaPlay} alt="" />
           {playPauseButton}
         </button>
         <button onClick={handleReset}>
-          <BiReset size={20} />
+          <img src={gifMufasaReset} alt="" />
+          <BsArrowCounterclockwise size={20} />
         </button>
         <ControlMusic
           musicPlaying={musicPlaying}

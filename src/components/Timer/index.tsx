@@ -24,7 +24,8 @@ export const Timer = () => {
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [timerRunning, setTimerRunning] = useState(false);
   const [secondsAmount, setSecondsAmount] = useState(0);
-  const [gifMufasa, setGifMufasa] = useState(mufasaGif);
+  const [gifMufasaPlay, setGifMufasaPlay] = useState(mufasaGif);
+  const [gifMufasaReset, setGifMufasaReset] = useState('');
   const [timePercent, setTimePercent] = useState(0);
   const [initialTime, setInitialTime] = useState(0);
   const [speakerIcon, setSpeakerIcon] = useState(<GiSpeakerOff size={20} color="white"/>);
@@ -40,6 +41,7 @@ export const Timer = () => {
       setImgOrGifMufasa(mufasaImg);
       setTimerRunning(false);
       setSecondsAmount(0);
+      setGifMufasaReset(mufasaGif);
     }
   }, [percentageForSecond, timerRunning, secondsAmount]);
 
@@ -71,7 +73,7 @@ export const Timer = () => {
       setControlsVisible(false);
       setTimerRunning(true);
       setMusicPlaying(true);
-      setGifMufasa('');
+      setGifMufasaPlay('');
 
     } else if(timerRunning) {
       setPlayPauseButton(<FaPlay size={20}/>);
@@ -81,10 +83,7 @@ export const Timer = () => {
     } else if(secondsAmount > 0) {
       setPlayPauseButton(<FaPause size={20}/>);
       setImgOrGifMufasa(mufasaGif);
-      setProgressBarVisible(true);
-      setControlsVisible(false);
       setTimerRunning(true);
-      setGifMufasa('')
    } 
   };
 
@@ -103,7 +102,8 @@ export const Timer = () => {
     setPlayPauseButton(<FaPlay size={20}/>);
     setProgressBarVisible(false);
     setControlsVisible(true);
-    setGifMufasa(mufasaGif);
+    setGifMufasaPlay(mufasaGif);
+    setGifMufasaReset('');
     setTimerRunning(false);
     setSecondsAmount(0);
     setTimePercent(0);
@@ -128,8 +128,9 @@ export const Timer = () => {
         playPauseButton={playPauseButton}
         controlsVisible={controlsVisible}
         handleReset={handleReset}
-        gifMufasa={gifMufasa}
-
+        gifMufasaPlay={gifMufasaPlay}
+        gifMufasaReset={gifMufasaReset}
+        timerRunning={timerRunning}
        controlsMusic={{handlePlaySound, speakerIcon, musicPlaying}}
       />
         
