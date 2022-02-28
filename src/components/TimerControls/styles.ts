@@ -49,7 +49,7 @@ export const PlayAndResetAndMusic = styled.div<IControlsProps>`
     align-items: center;
     background-color: rgb(224, 55, 55);
     color: white;
-    min-width: 40%;
+    min-width: ${({isVisible}) => isVisible ? '30%' : '40%'};
 
     img {
       display: ${({timerRunning}) => timerRunning ? 'none' : 'flex'};
