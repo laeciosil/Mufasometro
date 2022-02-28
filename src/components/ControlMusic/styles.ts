@@ -7,5 +7,6 @@ interface IPlayPauseButtonProps {
 export const Container = styled.div``;
 
 export const PlayPauseButton = styled.button<IPlayPauseButtonProps>`
-  background-color: ${({isPlaying}) => isPlaying ? 'rgb(45, 110, 61)' : 'rgb(207, 75, 57)'};
+  background-color: ${({isPlaying}) => isPlaying ? 
+    'rgb(45, 110, 61)' : 'rgb(207, 75, 57)'};
 `;

@@ -72,5 +72,5 @@ export const TimerControls = (props: ITimerControlsProps) => {
         />
       </PlayAndResetAndMusic>
     </ControlsContainer>
-  )
+  );
 };

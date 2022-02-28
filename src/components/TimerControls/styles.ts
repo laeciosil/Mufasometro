@@ -12,12 +12,12 @@ export const ControlsContainer = styled.section `
     border-radius: 0.25rem;
     margin-right: 0.50rem;
     padding: 1rem;
-  }
+  };
 
   button:hover {
     transition: 0.2s;
     filter: brightness(0.8);
-  }
+  };
 
   button:outline {
     border: none;
@@ -35,14 +35,15 @@ export const PlayAndResetAndMusic = styled.div<IControlsProps>`
 
   img{
     width: 20px;
-  }
+  };
 
   .playPause {
     background-color: #326EF0;
     color: white;
     min-width: 30%;
     
-  }
+  };
+
   button:nth-child(2) {
     display: ${({isVisible}) => isVisible ? 'block' : 'flex'};
     justify-content: center;
@@ -54,7 +55,7 @@ export const PlayAndResetAndMusic = styled.div<IControlsProps>`
     img {
       display: ${({timerRunning}) => timerRunning ? 'none' : 'flex'};
       margin-left: 1rem;
-    }
+    };
     
-  }
+  };
 `;

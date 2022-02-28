@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { ProgressBar } from "../ProgressBar";
+
 import {FaPlay, FaPause} from "react-icons/fa";
 import {GiSpeaker, GiSpeakerOff} from "react-icons/gi";
+
 import mufasaGif from "../../assets/mufasaGif.gif";
 import mufasaImg from "../../assets/mufasaImg.png";
+
+import { ProgressBar } from "../ProgressBar";
+import { TimerControls } from "../TimerControls";
 
 import {
   Container,
@@ -13,22 +17,21 @@ import {
   TimerContainer,
 } from './styles';
 
-import { TimerControls } from "../TimerControls";
 
 export const Timer = () => {
+  const [speakerIcon, setSpeakerIcon] = useState(<GiSpeakerOff size={20} color="white"/>);
   const [playPauseButton, setPlayPauseButton] = useState(<FaPlay size={20}/>);
   const [progressBarVisible, setProgressBarVisible] = useState(false);
   const [percentageForSecond, setPercentageForSecond] = useState(0);
   const [imgOrGifMufasa, setImgOrGifMufasa] = useState(mufasaGif);
+  const [gifMufasaPlay, setGifMufasaPlay] = useState(mufasaGif);
   const [controlsVisible, setControlsVisible] = useState(true);
+  const [gifMufasaReset, setGifMufasaReset] = useState('');
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [timerRunning, setTimerRunning] = useState(false);
   const [secondsAmount, setSecondsAmount] = useState(0);
-  const [gifMufasaPlay, setGifMufasaPlay] = useState(mufasaGif);
-  const [gifMufasaReset, setGifMufasaReset] = useState('');
   const [timePercent, setTimePercent] = useState(0);
   const [initialTime, setInitialTime] = useState(0);
-  const [speakerIcon, setSpeakerIcon] = useState(<GiSpeakerOff size={20} color="white"/>);
   
   useEffect(() => {
     if(timerRunning && secondsAmount > 0) {
@@ -36,11 +39,10 @@ export const Timer = () => {
         setTimePercent((oldState) => oldState + percentageForSecond);
         setSecondsAmount((oldState) => oldState - 1);
       }, 1000);
-      return;
+
     } else if (timerRunning && secondsAmount === 0) {
       setImgOrGifMufasa(mufasaImg);
       setTimerRunning(false);
-      setSecondsAmount(0);
       setGifMufasaReset(mufasaGif);
     }
   }, [percentageForSecond, timerRunning, secondsAmount]);
@@ -103,10 +105,10 @@ export const Timer = () => {
   const handleReset = () => {
     setPlayPauseButton(<FaPlay size={20}/>);
     setProgressBarVisible(false);
-    setControlsVisible(true);
     setGifMufasaPlay(mufasaGif);
-    setGifMufasaReset('');
+    setControlsVisible(true);
     setTimerRunning(false);
+    setGifMufasaReset('');
     setSecondsAmount(0);
     setTimePercent(0);
     setInitialTime(0);
@@ -124,16 +126,16 @@ export const Timer = () => {
         <Seconds>{String(seconds).padStart(2, '0')}</Seconds>
       </TimerContainer>
       <TimerControls 
+        controlsMusic={{handlePlaySound, speakerIcon, musicPlaying}}
         handleIncrementMinute={handleIncrementMinute}
         handleDecrementMinute={handleDecrementMinute}
         handlePlayPauseTimer={handlePlayPauseTimer}
         playPauseButton={playPauseButton}
         controlsVisible={controlsVisible}
-        handleReset={handleReset}
-        gifMufasaPlay={gifMufasaPlay}
         gifMufasaReset={gifMufasaReset}
+        gifMufasaPlay={gifMufasaPlay}
         timerRunning={timerRunning}
-       controlsMusic={{handlePlaySound, speakerIcon, musicPlaying}}
+        handleReset={handleReset}
       />
         
       {

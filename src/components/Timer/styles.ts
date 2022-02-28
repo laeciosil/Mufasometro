@@ -20,7 +20,6 @@ export const TimerContainer = styled.section `
   padding: 1rem;
 `;
 
-
 export const Minutes = styled.span `
   
   border-radius: 0.25rem;
@@ -29,10 +28,9 @@ export const Minutes = styled.span `
   max-height: 10vh;
   padding: 0.25rem;
   
-  `;
+`;
 
 export const Seconds = styled.span `
-  
   border-radius: 0.25rem;
   color: white;
   font-size: 5rem;
@@ -43,6 +41,5 @@ export const Seconds = styled.span `
 export const Separator = styled.span `
     color: white;
     font-size: 5rem;
-  
 `;
 
