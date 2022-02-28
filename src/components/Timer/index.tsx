@@ -79,11 +79,13 @@ export const Timer = () => {
       setPlayPauseButton(<FaPlay size={20}/>);
       setImgOrGifMufasa(mufasaImg);
       setTimerRunning(false);
+      setGifMufasaReset(mufasaGif);
       
     } else if(secondsAmount > 0) {
       setPlayPauseButton(<FaPause size={20}/>);
       setImgOrGifMufasa(mufasaGif);
       setTimerRunning(true);
+      setGifMufasaReset('');
    } 
   };
 

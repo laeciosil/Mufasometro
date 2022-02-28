@@ -5,7 +5,7 @@ interface IControlsProps {
   timerRunning: boolean;
 };
 
-export const ControlsContainer = styled.section `
+export const ControlsContainer = styled.section ` 
 
   button {
     border: none;
@@ -45,12 +45,15 @@ export const PlayAndResetAndMusic = styled.div<IControlsProps>`
   }
   button:nth-child(2) {
     display: ${({isVisible}) => isVisible ? 'block' : 'flex'};
+    justify-content: center;
+    align-items: center;
     background-color: rgb(224, 55, 55);
     color: white;
-    min-width: 35%;
+    min-width: 40%;
 
     img {
       display: ${({timerRunning}) => timerRunning ? 'none' : 'flex'};
+      margin-left: 1rem;
     }
     
   }
