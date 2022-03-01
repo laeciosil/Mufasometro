@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import {FaPlay, FaPause} from "react-icons/fa";
-import {GiSpeaker, GiSpeakerOff} from "react-icons/gi";
+import { FaPlay, FaPause } from "react-icons/fa";
+import { GiSpeaker, GiSpeakerOff } from "react-icons/gi";
 
 import mufasaGif from "../../assets/mufasaGif.gif";
 import mufasaImg from "../../assets/mufasaImg.png";
@@ -21,12 +21,12 @@ import {
 export const Timer = () => {
   const [speakerIcon, setSpeakerIcon] = useState(<GiSpeakerOff size={20} color="white"/>);
   const [playPauseButton, setPlayPauseButton] = useState(<FaPlay size={20}/>);
+  const [gifMufasaPlayButton, setGifMufasaPlayButton] = useState(mufasaGif);
+  const [gifMufasaResetButton, setGifMufasaResetButton] = useState('');
   const [progressBarVisible, setProgressBarVisible] = useState(false);
   const [percentageForSecond, setPercentageForSecond] = useState(0);
   const [imgOrGifMufasa, setImgOrGifMufasa] = useState(mufasaGif);
-  const [gifMufasaPlay, setGifMufasaPlay] = useState(mufasaGif);
   const [controlsVisible, setControlsVisible] = useState(true);
-  const [gifMufasaReset, setGifMufasaReset] = useState('');
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [timerRunning, setTimerRunning] = useState(false);
   const [secondsAmount, setSecondsAmount] = useState(0);
@@ -43,7 +43,7 @@ export const Timer = () => {
     } else if (timerRunning && secondsAmount === 0) {
       setImgOrGifMufasa(mufasaImg);
       setTimerRunning(false);
-      setGifMufasaReset(mufasaGif);
+      setGifMufasaResetButton(mufasaGif);
     }
   }, [percentageForSecond, timerRunning, secondsAmount]);
 
@@ -62,6 +62,7 @@ export const Timer = () => {
   const handleDecrementMinute = () => {
     if(secondsAmount >= 60) {
       setSecondsAmount(state => state - 60);
+      setInitialTime(state => state - 60);
     }
   };
   
@@ -72,22 +73,22 @@ export const Timer = () => {
       setPlayPauseButton(<FaPause size={20}/>);
       setImgOrGifMufasa(mufasaGif);
       setProgressBarVisible(true);
+      setGifMufasaPlayButton('');
       setControlsVisible(false);
       setTimerRunning(true);
       setMusicPlaying(true);
-      setGifMufasaPlay('');
 
     } else if(timerRunning) {
       setPlayPauseButton(<FaPlay size={20}/>);
+      setGifMufasaResetButton(mufasaGif);
       setImgOrGifMufasa(mufasaImg);
       setTimerRunning(false);
-      setGifMufasaReset(mufasaGif);
       
     } else if(secondsAmount > 0) {
       setPlayPauseButton(<FaPause size={20}/>);
       setImgOrGifMufasa(mufasaGif);
       setTimerRunning(true);
-      setGifMufasaReset('');
+      setGifMufasaResetButton('');
    } 
   };
 
@@ -104,24 +105,24 @@ export const Timer = () => {
 
   const handleReset = () => {
     setPlayPauseButton(<FaPlay size={20}/>);
+    setGifMufasaPlayButton(mufasaGif);
     setProgressBarVisible(false);
-    setGifMufasaPlay(mufasaGif);
+    setGifMufasaResetButton('');
     setControlsVisible(true);
     setTimerRunning(false);
-    setGifMufasaReset('');
     setSecondsAmount(0);
     setTimePercent(0);
     setInitialTime(0);
   }
 
-  const minutesAmount = secondsAmount < 0 ? '00' : Math.floor(secondsAmount / 60);
+  const minutes = secondsAmount < 0 ? '00' : Math.floor(secondsAmount / 60);
   const seconds = secondsAmount < 0 ? '00' : secondsAmount % 60;
   
   return (
     <Container>
       <h1>Mufazometro</h1>
       <TimerContainer >
-        <Minutes>{String(minutesAmount).padStart(2, '0')}</Minutes>
+        <Minutes>{String(minutes).padStart(2, '0')}</Minutes>
         <Separator>:</Separator>
         <Seconds>{String(seconds).padStart(2, '0')}</Seconds>
       </TimerContainer>
@@ -130,10 +131,10 @@ export const Timer = () => {
         handleIncrementMinute={handleIncrementMinute}
         handleDecrementMinute={handleDecrementMinute}
         handlePlayPauseTimer={handlePlayPauseTimer}
+        gifMufasaResetButton={gifMufasaResetButton}
+        gifMufasaPlayButton={gifMufasaPlayButton}
         playPauseButton={playPauseButton}
         controlsVisible={controlsVisible}
-        gifMufasaReset={gifMufasaReset}
-        gifMufasaPlay={gifMufasaPlay}
         timerRunning={timerRunning}
         handleReset={handleReset}
       />

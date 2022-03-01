@@ -1,5 +1,5 @@
 import { ControlMusic} from "../ControlMusic";
-import {FiRefreshCcw} from 'react-icons/fi';
+import { FiRefreshCcw } from 'react-icons/fi';
 
 import {
   ControlsContainer, 
@@ -14,8 +14,8 @@ interface IControlMusicProps {
 };
 
 interface ITimerControlsProps {
-  gifMufasaPlay: string;
-  gifMufasaReset: string;
+  gifMufasaPlayButton: string;
+  gifMufasaResetButton: string;
   timerRunning: boolean;
   controlsVisible: boolean;
   playPauseButton: JSX.Element;
@@ -29,16 +29,16 @@ interface ITimerControlsProps {
 
 export const TimerControls = (props: ITimerControlsProps) => {
   const {
-    gifMufasaPlay, 
-    gifMufasaReset, 
-    controlsVisible, 
     handleIncrementMinute,
     handleDecrementMinute,
+    gifMufasaResetButton, 
     handlePlayPauseTimer,
+    gifMufasaPlayButton, 
+    controlsVisible, 
     playPauseButton,
-    handleReset,
     controlsMusic,
-    timerRunning
+    timerRunning,
+    handleReset,
   } = props;
 
   const {musicPlaying, handlePlaySound, speakerIcon  } = controlsMusic;
@@ -58,12 +58,12 @@ export const TimerControls = (props: ITimerControlsProps) => {
         timerRunning={timerRunning}
       >
         <button className="playPause" onClick={handlePlayPauseTimer} >
-          <img  src={gifMufasaPlay} alt="" />
+          <img  src={gifMufasaPlayButton} alt="" />
           {playPauseButton}
         </button>
         <button onClick={handleReset}>
           <FiRefreshCcw size={20} />
-          <img src={gifMufasaReset} alt="" />
+          <img src={gifMufasaResetButton} alt="" />
         </button>
         <ControlMusic
           musicPlaying={musicPlaying}

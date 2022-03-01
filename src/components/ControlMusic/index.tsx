@@ -1,10 +1,6 @@
 import ReactPlayer from "react-player";
 import { Container, PlayPauseButton } from "./styles";
 
-export type IPlaySoundButton ={
-  title: string;
-}
-
 export interface IControlMusicProps {
   musicPlaying: boolean;
   speakerIcon: JSX.Element;
@@ -24,9 +20,9 @@ export const ControlMusic = (props: IControlMusicProps) => {
       </PlayPauseButton>
 
       <ReactPlayer
-      style={{display: 'none'}}
-      playing={musicPlaying} 
-      url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
+        style={{display: 'none'}}
+        playing={musicPlaying} 
+        url={'https://youtu.be/U6n2NcJ7rLc?list=RDU6n2NcJ7rLc'}
       />
     </Container>
   );

@@ -1,5 +1,5 @@
 import ProgressBarComponent from "@ramonak/react-progress-bar";
-import {ProgressBarContainer} from './styles';
+import { Container } from './styles';
 
 interface IProgressBarProps {
   imgOrGifMufasa: string;
@@ -10,7 +10,7 @@ export const ProgressBar = (props: IProgressBarProps) => {
   const {imgOrGifMufasa, timePercent} = props;
 
   return (
-    <ProgressBarContainer 
+    <Container 
       mufasaProgress={timePercent}
     >
     <img src={imgOrGifMufasa} alt="mufasa" />
@@ -21,7 +21,6 @@ export const ProgressBar = (props: IProgressBarProps) => {
       completed={timePercent}
       customLabel={`${timePercent.toFixed(2)}%`}
     />
-    
-  </ProgressBarContainer>
+  </Container>
   );
 };

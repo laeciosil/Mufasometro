@@ -4,7 +4,7 @@ interface IProgressBarProps {
   mufasaProgress: number;
 };
 
-export const ProgressBarContainer = styled.section<IProgressBarProps> `
+export const Container = styled.section<IProgressBarProps> `
   display: flex;
   flex-direction: column;
   margin-top: 5rem;
@@ -28,8 +28,4 @@ export const ProgressBarContainer = styled.section<IProgressBarProps> `
     transition: 0.2s;
     filter: brightness(0.8);
   }
-
-  button:outline {
-    border: none;
-  };
 `;
