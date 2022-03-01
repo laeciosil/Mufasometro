@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+button {
+  cursor: pointer;
+}
 .App {
   align-items: center;
   background-image: url('../src/assets/bg.webp');
