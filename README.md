@@ -1,6 +1,6 @@
-# Mufazometro
+# Mufasômetro
 
-# [Link Deploy](https://mufazometro.vercel.app/)
+# [Link Deploy](https://mufasometro.vercel.app/)
 
 **********************
 # Instalar Dependências

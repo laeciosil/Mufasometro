@@ -120,7 +120,7 @@ export const Timer = () => {
   
   return (
     <Container>
-      <h1>Mufazometro</h1>
+      <h1>Mufasômetro</h1>
       <TimerContainer >
         <Minutes>{String(minutes).padStart(2, '0')}</Minutes>
         <Separator>:</Separator>
