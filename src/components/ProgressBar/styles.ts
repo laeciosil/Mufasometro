@@ -1,31 +1,28 @@
 import styled from "styled-components";
-
 interface IProgressBarProps {
-  mufasaProgress: number;
+  totalCompleted: number;
 };
 
-export const Container = styled.section<IProgressBarProps> `
+export const Container = styled.div`
+  background-color: #bbb;
+  border-radius: 1rem;
+  width: 75vw;
+`;
+
+export const Content = styled.div<IProgressBarProps>`
   display: flex;
-  flex-direction: column;
-  margin-top: 5rem;
+  max-height: 1.2rem;
+  border-radius: 1rem;
+  justify-content: end;
+  align-items: center;
+  width: ${({ totalCompleted }) => totalCompleted}%;
+  height: 30px;
+  background-color: #036b52;
 
-  img {
-    margin-left: ${({mufasaProgress}) => mufasaProgress}%;
-    width: 150px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  button {
-    border: none;
-    border-radius: 0.25rem;
+  span {
     color: white;
-    margin-top: 1rem;
-    padding: 0.7rem;
-  }
-
-  button:hover {
-    transition: 0.2s;
-    filter: brightness(0.8);
+    font-weight: bold;
+    margin-left: ${({ totalCompleted }) => totalCompleted}%;
+    margin-right: 1rem;
   }
 `;

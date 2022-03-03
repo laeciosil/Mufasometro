@@ -6,7 +6,7 @@ import { GiSpeaker, GiSpeakerOff } from "react-icons/gi";
 import mufasaGif from "../../assets/mufasaGif.gif";
 import mufasaImg from "../../assets/mufasaImg.png";
 
-import { ProgressBar } from "../ProgressBar";
+import { Footer } from "../Footer";
 import { TimerControls } from "../TimerControls";
 
 import {
@@ -142,7 +142,7 @@ export const Timer = () => {
       {
         progressBarVisible && 
          (
-            <ProgressBar
+            <Footer
               imgOrGifMufasa={imgOrGifMufasa}
               timePercent={timePercent}
             />
