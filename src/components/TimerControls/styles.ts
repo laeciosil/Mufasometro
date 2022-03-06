@@ -38,9 +38,16 @@ export const PlayAndResetAndMusic = styled.div<IControlsProps>`
   };
 
   .playPause {
+    display: flex;
+    justify-content: center;
     background-color: #326EF0;
     color: white;
     min-width: 30%;
+    max-height: 55px;
+
+    img {
+      display: ${({isVisible}) => isVisible ? 'flex' : 'none'};
+    };
     
   };
 
@@ -51,6 +58,7 @@ export const PlayAndResetAndMusic = styled.div<IControlsProps>`
     background-color: rgb(224, 55, 55);
     color: white;
     min-width: ${({isVisible}) => isVisible ? '30%' : '40%'};
+    max-height: 55px;
 
     img {
       display: ${({timerRunning}) => timerRunning ? 'none' : 'flex'};
